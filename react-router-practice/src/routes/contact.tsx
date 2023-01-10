@@ -1,9 +1,16 @@
 import { Form } from "react-router-dom";
 
-type Contact = {};
+type Contact = {
+  first: string;
+  last: string;
+  avatar: string;
+  twitter: string;
+  notes: string;
+  favorite: boolean;
+};
 
 export default function Contact() {
-  const contact = {
+  const contact: Contact = {
     first: "Your",
     last: "Name",
     avatar: "https://placekitten.com/g/200/200",
@@ -61,9 +68,9 @@ export default function Contact() {
   );
 }
 
-function Favorite({ contact }) {
+function Favorite(props: { contact: Contact }) {
   // yes, this is a `let` for later
-  let favorite = contact.favorite;
+  let favorite = props.contact.favorite;
   return (
     <Form method="post">
       <button
