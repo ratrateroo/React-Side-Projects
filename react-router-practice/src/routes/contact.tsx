@@ -1,5 +1,7 @@
 import { Form } from "react-router-dom";
 
+type Contact = {};
+
 export default function Contact() {
   const contact = {
     first: "Your",
@@ -13,7 +15,7 @@ export default function Contact() {
   return (
     <div id="contact">
       <div>
-        <img key={contact.avatar} src={contact.avatar || null} />
+        <img key={contact.avatar} src={contact.avatar || undefined} />
       </div>
 
       <div>
