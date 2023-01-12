@@ -2,7 +2,7 @@ import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import { sortBy } from "sort-by-typescript";
 
-export async function getContacts(query) {
+export async function getContacts(query: string) {
   await fakeNetwork(`getContacts:${query}`);
   let contacts = await localforage.getItem("contacts");
   if (!contacts) contacts = [];
@@ -22,14 +22,14 @@ export async function createContact() {
   return contact;
 }
 
-export async function getContact(id) {
+export async function getContact(id: number) {
   await fakeNetwork(`contact:${id}`);
   let contacts = await localforage.getItem("contacts");
   let contact = contacts.find((contact) => contact.id === id);
   return contact ?? null;
 }
 
-export async function updateContact(id, updates) {
+export async function updateContact(id: number, updates: string) {
   await fakeNetwork();
   let contacts = await localforage.getItem("contacts");
   let contact = contacts.find((contact) => contact.id === id);
