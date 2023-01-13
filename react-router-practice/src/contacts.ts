@@ -57,7 +57,7 @@ function set(contacts) {
 // fake a cache so we don't slow down stuff we've already seen
 let fakeCache = {};
 
-async function fakeNetwork(key) {
+async function fakeNetwork(key?: number) {
   if (!key) {
     fakeCache = {};
   }
