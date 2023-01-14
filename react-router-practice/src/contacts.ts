@@ -39,18 +39,20 @@ export async function updateContact(id: number, updates: string) {
   return contact;
 }
 
-export async function deleteContact(id) {
-  let contacts = await localforage.getItem("contacts");
-  let index = contacts.findIndex((contact) => contact.id === id);
-  if (index > -1) {
-    contacts.splice(index, 1);
-    await set(contacts);
-    return true;
+export async function deleteContact(id: number) {
+  let contacts: any[] | null = await localforage.getItem("contacts");
+  let index = contacts?.findIndex((contact) => contact?.id === id);
+  if (index ? index > -1 : null) {
+    if (index) {
+      contacts?.splice(index, 1);
+      await set(contacts);
+      return true;
+    }
   }
   return false;
 }
 
-function set(contacts) {
+function set(contacts: any[] | null) {
   return localforage.setItem("contacts", contacts);
 }
 
