@@ -7,7 +7,9 @@ export async function loader() {
   return { contacts };
 }
 export default function Root() {
-  const { contacts } = useLoaderData();
+  if ({ contacts }) {
+    const { contacts } = useLoaderData();
+  }
   return (
     <>
       <div>
