@@ -4,7 +4,7 @@ import { sortBy } from "sort-by-typescript";
 
 export async function getContacts(query?: string) {
   await fakeNetwork(`getContacts:${query}`);
-  let contacts = await localforage.getItem("contacts");
+  let contacts = (await localforage.getItem("contacts")) as string[];
   if (!contacts) contacts = [];
   if (query) {
     contacts = matchSorter(contacts, query, { keys: ["first", "last"] });
