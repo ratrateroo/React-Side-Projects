@@ -10,10 +10,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Contact />,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
 
